@@ -1,5 +1,6 @@
 class Elevator < ApplicationRecord
     belongs_to :column
+    has_many :interventions
 
     oldStatus = ""
     after_initialize do |e|

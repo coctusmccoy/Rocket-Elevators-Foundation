@@ -53,15 +53,7 @@ index = 0
 $reusableEmails = []
 i = 0
 
-intervention = Intervention.create!(
-    author: "micheal scott"
-    customerID: 1
-    buildingID: 1
-    batteryID: 1
-    columnID: 1
-    elevatorID: 1
 
-)
 
 while i < 10 do
     Faker::Config.locale = 'en-CA'
@@ -187,10 +179,22 @@ while i < 10 do
                     information: howManyElevator,
                     Notes: Faker::Hacker.say_something_smart,
                     column: column
+                )    
+                intervention = Intervention.create!(
+                    author: ["micheal scott", "john cena", "jake peralta"].sample,
+                    result: "incompleted",
+                    report: "tut tut tut tut dora",
+                    status: "Pending",
+                    customer: customer,
+                    building: building,
+                    battery: battery,
+                    column: column,
+                    employee: employee
                 )
             end 
         end     
     end
+
     i += 1
 end
     #Create the fake Leads

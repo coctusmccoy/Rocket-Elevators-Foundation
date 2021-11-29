@@ -2,7 +2,7 @@ class Customer < ApplicationRecord
     belongs_to :user
     belongs_to :address
     has_many :buildings
-    # has_many :interventions
+    has_many :interventions
 
     oldEmail = ""
     leads = Lead.all
