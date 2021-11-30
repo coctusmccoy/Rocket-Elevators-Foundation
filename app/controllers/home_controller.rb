@@ -25,9 +25,13 @@ class HomeController < ApplicationController
     redirect_to "#home"
   end
 
-  private
 
+
+  private  
+  
   def lead_params
     params.require(:lead).permit(:full_name, :company_name, :email, :phone_number, :project_name, :project_description, :departement_in_charge_of_the_elevators, :message, :file)
   end
+
+
 end

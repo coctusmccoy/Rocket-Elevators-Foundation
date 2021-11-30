@@ -6,7 +6,8 @@ class CreateInterventions < ActiveRecord::Migration[5.2]
       t.string :report
       t.string :status
 
-      t.timestamps
+      t.string :start
+      t.string :end
     end
   end
 end

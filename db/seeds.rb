@@ -180,17 +180,6 @@ while i < 10 do
                     Notes: Faker::Hacker.say_something_smart,
                     column: column
                 )    
-                intervention = Intervention.create!(
-                    author: ["micheal scott", "john cena", "jake peralta"].sample,
-                    result: "incompleted",
-                    report: "tut tut tut tut dora",
-                    status: "Pending",
-                    customer: customer,
-                    building: building,
-                    battery: battery,
-                    column: column,
-                    employee: employee
-                )
             end 
         end     
     end
