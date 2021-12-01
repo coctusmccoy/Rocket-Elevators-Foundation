@@ -152,23 +152,23 @@
               <%= f.text_area :status, :value => "Pending" %>
             </div>
             
-            <div class="col-md-6">
+            <div class="col-md-6" id="customer">
               <%= f.label :customer, :"Customer *" %>
-                <%= f.collection_select :customer_id, Customer.order(:id), :id, :id, {:prompt => 'Select'}, :required=> 'required'%>
+                <%= f.collection_select :customer_id, Customer.order(:id), :id, :company_name, include_blank: "SELECT"%>
             </div>
             
             <div class="col-md-6">
             <%= f.label :employee_id, :"Employee " %>
-              <%= f.collection_select :employee_id , Employee.order(:id), :id, :id, include_blank: true  %>
+              <%= f.collection_select :employee_id , Employee.order(:id), :id, :first_name, include_blank: "NONE"  %>
             </div>
           </div>
           <br><br>
           <div class= "row">
             <div class= "col-md-6">
               <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4" id="building">
                   <%= f.label :building_id, :"Building *" %>
-                  <%= f.grouped_collection_select :building_id,  Customer.order(:id), :buildings, :id, :id, :id, :required=> 'required'%>
+                  <%= f.grouped_collection_select :building_id,  Customer.order(:id), :buildings, :company_name, :id, :id, :required=> 'required'%>
                 </div>
               </div>
               <br>
@@ -195,13 +195,17 @@
             </div>
             <div class= "col-md-6">
               <%= f.label :report, :"Report *" %>
-              <%= f.text_area :report, :class=> 'form-control', :required=> 'required'%>
-            </div>               
-            <p id="submitButton" onclick="alertbox()">
-              <button class="btn btn-success btn-lg"  
-              data-callback='onSubmit' 
-              data-action='submit'>Submit</button> 
-            </p>
+              <div id="report">
+              <%= f.text_area :report, :class=> 'form-control', :required=> 'required', :value=> ""%>
+              </div>
+            </div>
+            <div id="button">
+              <p id="submitButton" onclick="alertbox()">
+                <button class="btn btn-success btn-lg"  
+                data-callback='onSubmit' 
+                data-action='submit'>Submit</button> 
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -275,7 +279,8 @@
   <script>
     var plugin_path = "assets/plugins/";
   </script>
-  <script src="assets/plugins/jquery/jquery-3.3.1.min.js"></script>
+  <script src="../assets/plugins/jquery/jquery-3.3.1.min.js"></script>
+  <script src="../assets/intervention.js"></script>
 </body>
 
 </html>

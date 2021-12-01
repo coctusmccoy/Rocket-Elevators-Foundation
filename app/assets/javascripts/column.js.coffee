@@ -6,6 +6,6 @@ jQuery ->
         battery = $('#interventions_battery_id :selected').text()
         optionscolumn = $(column).filter("optgroup[label='#{battery}']").html()
         if optionscolumn
-            $('#interventions_column_id').html(optionscolumn)
+            $('#interventions_column_id').html("<option value=''>NONE</option>" + optionscolumn)
         else 
             $('#interventions_column_id').empty() 

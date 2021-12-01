@@ -12,6 +12,7 @@ jQuery ->
             $('#interventions_elevator_id').parent().hide()
         else 
             $('#interventions_battery_id').empty()
-            $('#interventions_battery_id').parent().hide()   
+            $('#interventions_battery_id').parent().hide()
+            $('#interventions_column_id').parent().hide()   
             $('#interventions_elevator_id').parent().hide()      
                 
