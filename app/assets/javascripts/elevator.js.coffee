@@ -6,6 +6,7 @@ jQuery ->
         column = $('#interventions_column_id :selected').text()
         optionselevator = $(elevator).filter("optgroup[label='#{column}']").html()
         if optionselevator
+            option
             $('#interventions_elevator_id').html(optionselevator)
             $('#interventions_elevator_id').parent().show()
         else 

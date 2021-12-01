@@ -154,12 +154,12 @@
             
             <div class="col-md-6">
               <%= f.label :customer, :"Customer *" %>
-                <%= f.collection_select :customer_id, Customer.order(:id), :id, :id, include_blank: true, :required=> 'required'%>
+                <%= f.collection_select :customer_id, Customer.order(:id), :id, :id, {:prompt => 'Select'}, :required=> 'required'%>
             </div>
             
             <div class="col-md-6">
             <%= f.label :employee_id, :"Employee " %>
-              <%= f.collection_select :employee_id , Employee.order(:id), :id, :id, include_blank: true %>
+              <%= f.collection_select :employee_id , Employee.order(:id), :id, :id, include_blank: true  %>
             </div>
           </div>
           <br><br>
@@ -168,7 +168,7 @@
               <div class="row">
                 <div class="col-md-4">
                   <%= f.label :building_id, :"Building *" %>
-                  <%= f.grouped_collection_select :building_id,  Customer.order(:id), :buildings, :id, :id, :id, include_blank: true, :required=> 'required'%>
+                  <%= f.grouped_collection_select :building_id,  Customer.order(:id), :buildings, :id, :id, :id, :required=> 'required'%>
                 </div>
               </div>
               <br>
