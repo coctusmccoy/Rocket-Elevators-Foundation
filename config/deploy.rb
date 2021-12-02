@@ -4,7 +4,7 @@ lock "~> 3.16.0"
 before 'deploy', 'rvm1:install:ruby'
 set :rvm_map_bins, [ 'rake', 'gem', 'bundle', 'ruby', 'puma', 'pumactl' ]
 set :application, "JULIEN_DARAC"
-set :repo_url, "https://github.com/coctusmccoy/Rocket-Elevators-Foundation"
+set :repo_url, "git@github.com:coctusmccoy/Rocket-Elevators-Foundation.git"
 set :branch, ENV['BRANCH'] if ENV['BRANCH']
 
 # Default branch is :main
