@@ -166,7 +166,7 @@
             
             <div class="col-md-6">
             <%= f.label :employee_id, :"Employee " %>
-              <%= f.collection_select :employee_id , Employee.order(:id), :id, :first_name, include_blank: "NONE"  %>
+              <%= f.collection_select :employee_id , Employee.order(:id), :id, :id, include_blank: "NONE"  %>
             </div>
           </div>
           <br><br>
