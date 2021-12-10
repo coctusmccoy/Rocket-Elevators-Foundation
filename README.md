@@ -13,3 +13,16 @@ then an admin button will appear just go over it and a drop down for interventio
 # Linked api
 
 the Rest-API github: https://github.com/coctusmccoy/Rocket-Elevators-Foundation-REST-API
+
+# Test With Rspec
+
+the two important document location
+
+1. spec document: spec/elevator_media_spec.rb
+2. elevator media: lib/elevatord_media.rb
+
+to run the implemented test run in the directory of the global document
+- bundle exec rspec or bundle exec rspec --format documentation(for more information)
+
+# Other repo
+since i did another repo for the test at first my commits are on this one: https://github.com/coctusmccoy/Rocket-Elevators-TDD
