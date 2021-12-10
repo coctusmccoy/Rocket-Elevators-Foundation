@@ -120,7 +120,7 @@
                         <ul class="dropdown-menu">
                         <li class="dropdown"></li>
                         <li><a class="dropdown-item" href="/admin">ADMIN</a></li>
-                        <li><a class="dropdown-item" href="intervention/interventions">INTERVENTION</a></li>
+                        <li><a class="dropdown-item" href="#">INTERVENTION</a></li>
                         </ul>
                         </li>
                     <%end%>
@@ -160,7 +160,7 @@
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> characters minimumm, at least one Capital and one number)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
@@ -170,7 +170,13 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-
+    <div class="actions">
+  
+    <button class="g-recaptcha, btn btn-success btn-lg"  
+        data-sitekey=<%="#{ENV['google_captcha']}"%>
+        data-callback='onSubmit' 
+        data-action='submit'>Submit</button>
+  </div>
 <% end %>
 
 <%= render "devise/shared/links" %>

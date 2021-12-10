@@ -1,7 +1,8 @@
 require 'zendesk_main'
 
 class QuotesController < ApplicationController
-  before_action :authenticate_user!, :only => [:show]
+  before_action :authenticate_user!, :only => [:index]
+  before_action :check_admin, :only =>[:index]
   def new
     @quote = Quote.new
   end
@@ -49,6 +50,10 @@ class QuotesController < ApplicationController
   private
   def quote_params
     params.require(:quote).permit(:email, :company_name, :building_type, :appartement, :floor, :basement, :plan, :business, :parking, :cages, :occupant, :elevator_needed, :price, :fees, :total_price)
+  end
+
+  def check_admin
+    redirect_to root_path unless current_user.admin? || current_user.employee?
   end
   
 
