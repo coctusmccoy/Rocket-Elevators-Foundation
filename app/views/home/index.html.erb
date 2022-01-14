@@ -6,7 +6,7 @@
   <title>Rocket Elevator | Home</title>
   <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon" />
   <meta name="description" content="" />
-  <meta name="Author" content="Julien Darac" />
+  <meta name="Author" content="Daniel Gallardo" />
 
   <!-- mobile settings -->
   <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
@@ -19,6 +19,7 @@
     href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700"
     rel="stylesheet" type="text/css" />
 
+</head>
 
 <body class="enable-animation">
   <!-- wrapper -->
@@ -36,7 +37,6 @@
           <a class="logo float-left scrollTo" href="#top">
             <%= image_tag "/images/R2.png" %>
           </a>
-
           <!-- 
 							Top Nav 
 							
@@ -66,6 +66,15 @@
                   <!-- SERVICES -->
                   <a id="services-nav" href="#services"> SERVICES </a>
                 </li>
+                </li>
+                <% if user_signed_in?%>
+                  <% if current_user.admin == true || current_user.employee == true%>
+                    <li>
+                    <!-- AI -->
+                      <a id="AI-nav" href="machine_learning"> AI </a>
+                    </li>
+                  <%end%>
+                <% end %>
                 <li>
                   <!-- WORK -->
                   <a id="portfolio-nav" href="#portfolio"> PORTFOLIO </a>
@@ -83,34 +92,35 @@
                   <a id="contact-nav" href="#contact"> CONTACT </a>
                 </li>
                 <% if user_signed_in?%>
-                  <% if current_user.admin==true || current_user.employee==true%>
-                    <li>
-                        <a class="dropdown-toggle aria-haspopup=true" href="#">
-                        ADMIN
-                        </a>
-                        <ul class="dropdown-menu">
-                        <li class="dropdown"></li>
-                        <li><a class="dropdown-item" href="/admin">ADMIN</a></li>
-                        <li><a class="dropdown-item" href="intervention/interventions">INTERVENTION</a></li>
-                        </ul>
-                        </li>
-                    <%end%>
-                      <% end %>
-                        <% if user_signed_in? %>
-                          <li>
-                            <%= link_to 'EDIT PROFILE' , edit_user_registration_path, :class=> 'navbar-link' %>
-                          </li>
-                          <li>
-                            <%= link_to "LOGOUT" , destroy_user_session_path, method: :delete, :class=> 'navbar-link' %>
-                          </li>
-                          <% else %>
-                            <li>
-                              <%= link_to "LOGIN" , new_user_session_path, :class=> 'navbar-link' %>
-                            </li>
-                            <li>
-                              <%= link_to "SIGN UP" , new_user_registration_path, :class=> 'navbar-link' %>
-                            </li>
-                            <% end %>
+                  <% if current_user.admin == true || current_user.employee == true%>
+                  <li>
+                    <a class='navbar-link' href="/admin">ADMIN</a>
+                  </li>
+                  <%end%>
+                <% end %>
+                <% if user_signed_in?%>
+                  <% if current_user.admin == true || current_user.employee == true%>
+                  <li>
+                    <a class='navbar-link' href="/intervention">INTERVENTION</a>
+                  </li>
+                  <%end%>
+                <% end %>
+                <% if user_signed_in? %>
+                  <li>
+                    <%= link_to 'EDIT PROFILE' , edit_user_registration_path, :class=> 'navbar-link' %>
+                  </li>
+                  <li>
+                    <%= link_to "LOGOUT" , destroy_user_session_path, method: :delete, :class=> 'navbar-link' %>
+                  </li>
+                <% else %>
+                  <li>
+                    <%= link_to "LOGIN" , new_user_session_path, :class=> 'navbar-link' %>
+                  </li>
+                  <li>
+                    <%= link_to "SIGN UP" , new_user_registration_path, :class=> 'navbar-link' %>
+                  </li>
+                <% end %>
+              </ul>
             </nav>
           </div>
         </div>
@@ -662,7 +672,7 @@
                 the monitors on turn the crank.
               </p>
               <cite>
-                Julien Darac
+                Daniel Gallardo
                 <span>Employee of the Month</span>
               </cite>
             </div>
@@ -1025,7 +1035,8 @@
               </fieldset>
               <div class="row">
                 <div class="col-md-3" onclick="alert('Your form as been sent!')">
-                  <button class="btn btn-success btn-lg"  
+                  <button class="g-recaptcha, btn btn-success btn-lg"  
+                  data-sitekey=<%="#{ENV['google_captcha']}"%>
                   data-callback='onSubmit' 
                   data-action='submit'>Send Message</button>
                     <% end %>
@@ -1093,30 +1104,32 @@
       </div>
     </footer>
     <!-- /FOOTER -->
-  </div>
-  <!-- /wrapper -->
 
-  <!-- SCROLL TO TOP -->
-  <a href="#" id="toTop"></a>
+    <!-- SCROLL TO TOP -->
+    <a href="#" id="toTop"></a>
 
-  <!-- JAVASCRIPT FILES -->
-  <script>
-    var plugin_path = "assets/plugins/";
-  </script>
-  <script src="assets/plugins/jquery/jquery-3.3.1.min.js"></script>
-
-  <script src="assets/scripts.js"></script>
+    <!-- JAVASCRIPT FILES -->
     <script>
-   function onSubmit(token) {
-     document.getElementById("demo-form").submit();}
- </script>
+      var plugin_path = "assets/plugins/";
+    </script>
+<!--    <script src="assets/plugins/jquery/jquery-3.5.0.min.js"></script> -->
+
+<!--    <script src="assets/scripts.js"></script> -->
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+      <script>
+    function onSubmit(token) {
+      document.getElementById("demo-form").submit();}
+  </script>
+  <script src=<%="https://www.google.com/recaptcha/api.js?render=#{ENV['google_captcha']}"%>></script>
 
 
 
-  <!-- REVOLUTION SLIDER -->
-  <script src="assets/plugins/slider.revolution/js/jquery.themepunch.tools.min.js"></script>
-  <script src="assets/plugins/slider.revolution/js/jquery.themepunch.revolution.min.js"></script>
-  <script src="assets/view/demo.revolution_slider.js"></script>
+    <!-- REVOLUTION SLIDER -->
+    <script src="assets/plugins/slider.revolution/js/jquery.themepunch.tools.min.js"></script>
+    <script src="assets/plugins/slider.revolution/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="assets/view/demo.revolution_slider.js"></script>
+      <!-- /wrapper -->
+  </div>
 </body>
 
 </html>

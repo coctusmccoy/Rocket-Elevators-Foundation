@@ -82,22 +82,12 @@
                 <!-- CONTACT -->
                 <a href="../../#contact"> CONTACT </a>
               </li>
-                <% if user_signed_in?%>
-                  <% if current_user.admin==true || current_user.employee==true%>
-                    <li>
-                        <a class="dropdown-toggle aria-haspopup=true" href="#">
-                        ADMIN
-                        </a>
-                        <ul class="dropdown-menu">
-                        <li class="dropdown"></li>
-                        <li><a class="dropdown-item" href="/admin">ADMIN</a></li>
-                        <li><a class="dropdown-item" href="intervention/interventions">INTERVENTION</a></li>
-                        </ul>
-                        </li>
-                    <%end%> 
-                  <% end %> 
-              
-              <% if user_signed_in? %>
+              <% if user_signed_in?%> <% if current_user.admin==true ||
+              current_user.employee==true%>
+              <li>
+                <a class="navbar-link" href="/admin">ADMIN</a>
+              </li>
+              <%end%> <% end %> <% if user_signed_in? %>
               <li>
                 <%= link_to 'EDIT PROFILE' , edit_user_registration_path,
                 :class=> 'navbar-link' %>

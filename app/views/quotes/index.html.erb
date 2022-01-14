@@ -64,6 +64,15 @@
                   <!-- SERVICES -->
                   <a href="../../#services"> SERVICES </a>
                 </li>
+                </li>
+                <% if user_signed_in?%>
+                  <% if current_user.admin == true || current_user.employee == true%>
+                    <li>
+                    <!-- AI -->
+                      <a id="AI-nav" href="machine_learning"> AI </a>
+                    </li>
+                  <%end%>
+                <% end %>
                 <li>
                   <!-- WORK -->
                   <a href="../../#portfolio"> PORTFOLIO </a>

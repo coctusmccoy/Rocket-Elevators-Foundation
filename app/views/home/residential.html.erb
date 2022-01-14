@@ -6,7 +6,7 @@
   <title>Rocket Elevator | Residential</title>
   <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon" />
   <meta name="description" content="" />
-  <meta name="Author" content="Julien Darac" />
+  <meta name="Author" content="Daniel Gallardo" />
 
   <!-- mobile settings -->
   <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
@@ -18,40 +18,12 @@
   <link
     href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700"
     rel="stylesheet" type="text/css" />
-</head>
 
-<!--
-		AVAILABLE BODY CLASSES:
-		
-		smoothscroll 			= create a browser smooth scroll
-		enable-animation		= enable WOW animations
-	-->
+</head>
 
 <body class="enable-animation">
   <!-- wrapper -->
   <div id="wrapper">
-    <!-- 
-				AVAILABLE HEADER CLASSES
-
-				Default nav height: 96px
-				.header-md 		= 70px nav height
-				.header-sm 		= 60px nav height
-
-				.b-0 		= remove bottom border (only with transparent use)
-				.sticky			= sticky header
-				.static			= static header
-				.dark			= dark header
-				.bottom			= header on bottom
-				
-				shadow-before-1 = shadow 1 header top
-				shadow-after-1 	= shadow 1 header bottom
-				shadow-before-2 = shadow 2 header top
-				shadow-after-2 	= shadow 2 header bottom
-				shadow-before-3 = shadow 3 header top
-				shadow-after-3 	= shadow 3 header bottom
-
-				.clearfix		= required for mobile menu, do not remove!
-			-->
     <div id="header" class="navbar-toggleable-md sticky header-md clearfix">
       <!-- TOP NAV -->
       <header id="topNav">
@@ -94,6 +66,15 @@
                   <!-- SERVICES -->
                   <a href="../../#services"> SERVICES </a>
                 </li>
+                </li>
+                <% if user_signed_in?%>
+                  <% if current_user.admin == true || current_user.employee == true%>
+                    <li>
+                    <!-- AI -->
+                      <a id="AI-nav" href="machine_learning"> AI </a>
+                    </li>
+                  <%end%>
+                <% end %>
                 <li>
                   <!-- WORK -->
                   <a href="../../#portfolio"> PORTFOLIO </a>
@@ -109,19 +90,20 @@
                 <li>
                   <!-- CONTACT -->
                   <a href="../../#contact"> CONTACT </a>
-                   <% if user_signed_in?%>
-                  <% if current_user.admin==true || current_user.employee==true%>
-                    <li>
-                        <a class="dropdown-toggle aria-haspopup=true" href="#">
-                        ADMIN
-                        </a>
-                        <ul class="dropdown-menu">
-                        <li class="dropdown"></li>
-                        <li><a class="dropdown-item" href="/admin">ADMIN</a></li>
-                        <li><a class="dropdown-item" href="intervention/interventions">INTERVENTION</a></li>
-                        </ul>
-                        </li>
-                    <%end%>
+                </li>
+                <% if user_signed_in?%>
+                  <% if current_user.admin == true || current_user.employee == true%>
+                  <li>
+                    <a class='navbar-link' href="/admin">ADMIN</a>
+                  </li>
+                  <%end%>
+                <% end %>
+                <% if user_signed_in?%>
+                  <% if current_user.admin == true || current_user.employee == true%>
+                  <li>
+                    <a class='navbar-link' href="/intervention">INTERVENTION</a>
+                  </li>
+                  <%end%>
                 <% end %>
                 <% if user_signed_in? %>
                   <li>      
@@ -370,7 +352,7 @@
   <script>
     var plugin_path = "assets/plugins/";
   </script>
-  <script src="assets/plugins/jquery/jquery-3.3.1.min.js"></script>
+  <script src="assets/plugins/jquery/jquery-3.5.0.min.js"></script>
 
   <script src="assets/js/scripts.js"></script>
 </body>

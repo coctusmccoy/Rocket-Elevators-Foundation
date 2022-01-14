@@ -6,8 +6,13 @@
   <title>Rocket Elevator | Residential</title>
   <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon" />
   <meta name="description" content="" />
-  <meta name="Author" content="Julien Darac" />
-
+  <meta name="Author" content="Daniel Gallardo" />
+   <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+   function onSubmit(token) {
+     document.getElementById("demo-form").submit();}
+ </script>
+ <script src=<%="https://www.google.com/recaptcha/api.js?render=#{ENV['google_captcha']}"%>></script>
 
   <!-- mobile settings -->
   <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
@@ -95,6 +100,15 @@
                   <!-- SERVICES -->
                   <a href="../../#services"> SERVICES </a>
                 </li>
+                </li>
+                <% if user_signed_in?%>
+                  <% if current_user.admin == true || current_user.employee == true%>
+                    <li>
+                    <!-- AI -->
+                      <a id="AI-nav" href="machine_learning"> AI </a>
+                    </li>
+                  <%end%>
+                <% end %>
                 <li>
                   <!-- WORK -->
                   <a href="../../#portfolio"> PORTFOLIO </a>
@@ -112,18 +126,11 @@
                   <a href="../../#contact"> CONTACT </a>
                 </li>
                 <% if user_signed_in?%>
-                  <% if current_user.admin==true || current_user.employee==true%>
-                    <li>
-                        <a class="dropdown-toggle aria-haspopup=true" href="#">
-                        ADMIN
-                        </a>
-                        <ul class="dropdown-menu">
-                        <li class="dropdown"></li>
-                        <li><a class="dropdown-item" href="/admin">ADMIN</a></li>
-                        <li><a class="dropdown-item" href="#">INTERVENTION</a></li>
-                        </ul>
-                        </li>
-                    <%end%>
+                  <% if current_user.admin == true || current_user.employee == true%>
+                  <li>
+                    <a class='navbar-link' href="/admin">ADMIN</a>
+                  </li>
+                  <%end%>
                 <% end %>
                 <% if user_signed_in? %>
                   <li>      
@@ -160,7 +167,7 @@
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimumm, at least one Capital and one number)</em>
+    <em>(8 characters minimum)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
@@ -170,7 +177,7 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-    <div class="actions">
+  <div class="actions">
   
     <button class="g-recaptcha, btn btn-success btn-lg"  
         data-sitekey=<%="#{ENV['google_captcha']}"%>

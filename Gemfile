@@ -4,6 +4,7 @@ git_source(:github) { |repo| 'https://github.com/#{repo}.git' }
 
 ruby '2.6.6'
 
+gem 'rake' , '>= 0.9.2'
 #Gem rails admin and the theme
 gem 'rails_admin'
 
@@ -20,7 +21,7 @@ gem 'rails', '~> 5.2.6'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # Use Puma as the app server
-gem 'puma'
+gem 'puma', '~> 3.11'
 
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
@@ -28,18 +29,20 @@ gem 'pg'
 
 gem 'devise'
 # Use SCSS for stylesheets
-gem 'sass-rails'
+gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier'
+gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails'
+gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks'
+gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder'
+gem 'jbuilder', '~> 2.5'
+gem 'ed25519'
+gem 'bcrypt_pbkdf'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -52,10 +55,10 @@ gem 'jbuilder'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', require: false
+gem 'bootsnap', '>= 1.1.0', require: false
 
-# call bootstrap 4
-gem 'bootstrap'
+# call bootstrap 5.1.3
+gem 'bootstrap', '~> 5.1.3'
 # call zendesk api
 gem 'zendesk_api'
 # call google maps api
@@ -73,10 +76,13 @@ gem 'capistrano3-puma'
 
 gem 'open-weather-ruby-client'
 
+gem 'rest-client'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails', '~> 5.0.0'
+  gem 'rspec-rails', '~> 4.1.0'
+
 end
 
 group :development do
@@ -102,7 +108,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #jquerry
 gem 'jquery-rails'
 
-gem 'jquery-turbolinks'
+gem 'jquery-turbolinks', '~> 2.1'
 
 gem 'font-awesome-rails'
 

@@ -53,8 +53,6 @@ index = 0
 $reusableEmails = []
 i = 0
 
-
-
 while i < 10 do
     Faker::Config.locale = 'en-CA'
     managerName = Faker::Name.name.gsub(/\W/, ' ')
@@ -148,10 +146,22 @@ while i < 10 do
             date_of_commissioning: Faker::Time.between(from: '2018-01-1', to: '2021-11-25'),
             date_of_last_inspection: Faker::Time.between(from: dateCreated, to: '2021-11-25'),
             certificate_of_operations: Faker::Number.between(from: 1, to: 5),
-            information: "", #Add more informations 
+            information: "", #Add more informations
             notes: Faker::Lorem.paragraph, 
             building: building
         )
+        intervention = Intervention.create!(
+            author: "mister bean ##{i}",
+            start_date: [Faker::Time.between(from: '2018-01-1', to: '2021-11-25'), nil].sample,
+            end_date: Faker::Time.between(from: '2018-01-1', to: '2021-11-25'),
+            result: "Incomplete",
+            report: "Description",
+            status: "Pending",
+            customer: customer,
+            building: building,
+            battery: battery
+        )
+    
         #Column
         howManyColumn.times do 
             column = Column.create!(
@@ -179,11 +189,10 @@ while i < 10 do
                     information: howManyElevator,
                     Notes: Faker::Hacker.say_something_smart,
                     column: column
-                )    
+                )
             end 
         end     
     end
-
     i += 1
 end
     #Create the fake Leads

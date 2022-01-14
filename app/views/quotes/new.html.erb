@@ -3,8 +3,13 @@
   <title>Rocket Elevator | Residential</title>
   <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon" />
   <meta name="description" content="" />
-  <meta name="Author" content="Julien Darac" />
-
+  <meta name="Author" content="Daniel Gallardo" />
+   <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+   function onSubmit(token) {
+     document.getElementById("demo-form").submit();}
+ </script>
+ <script src=<%="https://www.google.com/recaptcha/api.js?render=#{ENV['google_captcha']}"%>></script>
 
 
   <!-- mobile settings -->
@@ -93,6 +98,15 @@
                   <!-- SERVICES -->
                   <a href="../../#services"> SERVICES </a>
                 </li>
+                </li>
+                <% if user_signed_in?%>
+                  <% if current_user.admin == true || current_user.employee == true%>
+                    <li>
+                    <!-- AI -->
+                      <a id="AI-nav" href="machine_learning"> AI </a>
+                    </li>
+                  <%end%>
+                <% end %>
                 <li>
                   <!-- WORK -->
                   <a href="../../#portfolio"> PORTFOLIO </a>
@@ -110,18 +124,11 @@
                   <a href="../../#contact"> CONTACT </a>
                 </li>
                 <% if user_signed_in?%>
-                  <% if current_user.admin==true || current_user.employee==true%>
-                    <li>
-                        <a class="dropdown-toggle aria-haspopup=true" href="#">
-                        ADMIN
-                        </a>
-                        <ul class="dropdown-menu">
-                        <li class="dropdown"></li>
-                        <li><a class="dropdown-item" href="/admin">ADMIN</a></li>
-                        <li><a class="dropdown-item" href="intervention/interventions">INTERVENTION</a></li>
-                        </ul>
-                        </li>
-                    <%end%>
+                  <% if current_user.admin == true || current_user.employee == true%>
+                  <li>
+                    <a class='navbar-link' href="/admin">ADMIN</a>
+                  </li>
+                  <%end%>
                 <% end %>
                 <% if user_signed_in? %>
                   <li>      
@@ -260,7 +267,8 @@
 
                 <p style="display: none;" id="submitButton" onclick="alertbox()">
                   
-                  <button class="btn btn-success btn-lg"  
+                  <button class="g-recaptcha, btn btn-success btn-lg"  
+                  data-sitekey=<%="#{ENV['google_captcha']}"%>
                   data-callback='onSubmit' 
                   data-action='submit'>Submit</button>
   </div>
