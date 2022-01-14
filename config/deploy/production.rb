@@ -3,17 +3,17 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-server "143.198.36.77", user: "deploy", roles: %w{app db web}
-# server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
-# server "db.example.com", user: "deploy", roles: %w{db}
+server "3.96.211.140", user: "ubuntu", roles: %w{app db web}
+# server "example.com", user: "ubuntu", roles: %w{app web}, other_property: :other_value
+# server "db.example.com", user: "ubuntu", roles: %w{db}
 app = ENV['APP']
 if app.nil? or app.empty?
-  app = "Rocket-Elevators-Machine-Learning" 
+  app = "Rocket-Elevators-Final-App" 
 end
 set :application, app
 set :rails_env, "development"
 set :bundle_without, "production"
-set :deploy_to, "/home/deploy/apps/#{app}"
+set :ubuntu_to, "/home/ubuntu/apps/#{app}"
 set :linked_dirs, %w{tmp/pids tmp/sockets log}
 set :linked_files, %w{config/database.yml config/application.yml}
 
@@ -25,15 +25,15 @@ set :linked_files, %w{config/database.yml config/application.yml}
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
 
-role :app, %w{deploy@143.198.36.77}
-role :web, %w{deploy@143.198.36.77}
-role :db,  %w{deploy@143.198.36.77}
+role :app, %w{ubuntu@3.96.211.140}
+role :web, %w{ubuntu@3.96.211.140}
+role :db,  %w{ubuntu@3.96.211.140}
 
 
 
 # Configuration
 # =============
-# You can set any configuration variable like in config/deploy.rb
+# You can set any configuration variable like in config/ubuntu.rb
 # These variables are then only loaded and set in this stage.
 # For available Capistrano configuration variables see the documentation page.
 # http://capistranorb.com/documentation/getting-started/configuration/
