@@ -13,7 +13,7 @@ set :branch, 'main'
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /home/ubuntu/my_app_name
-# set :deploy_to, "/home/ubuntu/home/deploy/Rocket-Elevators-Final-App"
+set :deploy_to, "/home/ubuntu/apps/Rocket-Elevators-Final-App"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
