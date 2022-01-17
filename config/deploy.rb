@@ -12,8 +12,8 @@ set :branch, 'main'
 # Default branch is :main
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
-# Default deploy_to directory is /var/www/my_app_name
-# set :deploy_to, "/var/www/home/deploy/Rocket-Elevators-Final-App"
+# Default deploy_to directory is /home/ubuntu/my_app_name
+# set :deploy_to, "/home/ubuntu/home/deploy/Rocket-Elevators-Final-App"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
