@@ -6,10 +6,10 @@ class ApplicationController < ActionController::Base
     end
 
     def after_sign_in_path_for(resource_or_scope)
-        "https://www.rocket-elevators.xyz/"
+        "https://www.julienrocketelevator.xyz/"
     end
 
     def after_sign_out_path_for(resource_or_scope)
-        "https://www.rocket-elevators.xyz/"
+        "https://www.julienrocketelevator.xyz/"
     end
 end
